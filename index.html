@@ -1,302 +1,40 @@
-<!doctype html>
-<html lang="en" data-theme="light" data-portfolio-version="2026-redesign">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f5f1" />
-    <title>Shahnawaz Aadil — AI Engineer &amp; Data Scientist</title>
-    <meta
-      name="description"
-      content="Shahnawaz Aadil is an AI and data science graduate studying a Master of Artificial Intelligence at RMIT. Explore local AI, RAG, computer vision, and data science projects."
-    />
-    <link rel="canonical" href="https://shahnawazaadil7.github.io/" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Shahnawaz Aadil — Ideas into intelligence"
-    />
-    <meta
-      property="og:description"
-      content="Local AI, useful software, and a curiosity for what comes next. Explore my work in AI and data science."
-    />
-    <meta property="og:url" content="https://shahnawazaadil7.github.io/" />
-    <meta
-      property="og:image"
-      content="https://shahnawazaadil7.github.io/images/shahnawaz.jpg"
-    />
-    <meta
-      property="og:image:alt"
-      content="Shahnawaz Aadil presenting at a lectern"
-    />
-    <meta name="twitter:card" content="summary" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link
-      rel="preload"
-      href="assets/fonts/manrope-latin-variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="stylesheet" href="style.css" />
-    <script>
-      try {
-        document.documentElement.dataset.theme =
-          localStorage.getItem("portfolio-theme") ||
-          (matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-      } catch (e) {}
-    </script>
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="header-inner container">
-        <a class="brand" href="#home" aria-label="Shahnawaz Aadil, home"
-          ><span class="brand-mark">sa<span>.</span></span
-          ><span class="brand-name">shahnawaz aadil</span></a
-        >
-        <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-          <a class="nav-link" href="#projects">Work</a
-          ><a class="nav-link" href="#skills">Toolkit</a
-          ><a class="nav-link" href="#about">About</a
-          ><a class="nav-contact" href="#contact"
-            >Let’s talk <span aria-hidden="true">↗</span></a
-          >
-        </nav>
-        <div class="header-actions">
-          <button
-            class="icon-button search-toggle"
-            type="button"
-            data-open-search
-            aria-label="Search this portfolio"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="10.5" cy="10.5" r="6.5" />
-              <path d="m16 16 4 4" /></svg
-            ><kbd>⌘ K</kbd></button
-          ><button
-            class="icon-button"
-            id="theme-toggle"
-            type="button"
-            aria-label="Switch color theme"
-          >
-            <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="4" />
-              <path
-                d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"
-              /></svg
-            ><svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20.7 13A9 9 0 0 1 11 3.3 9 9 0 1 0 20.7 13Z" />
-            </svg></button
-          ><button
-            class="icon-button menu-toggle"
-            id="menu-toggle"
-            type="button"
-            aria-controls="primary-nav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-          </button>
-        </div>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <title>Shahnawaz Aadil | AI &amp; Machine Learning</title>
+  <meta name="description" content="Shahnawaz Aadil's personal portfolio. AI, machine learning, NLP, and data science projects. Master of Artificial Intelligence student at RMIT University, Melbourne.">
+  <link rel="canonical" href="https://shahnawazaadil7.github.io/">
+  <meta property="og:title" content="Shahnawaz Aadil | Portfolio">
+  <meta property="og:description" content="AI, machine learning, NLP, and data science. My projects, skills, and experience.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shahnawazaadil7.github.io/">
+  <meta property="og:image" content="https://shahnawazaadil7.github.io/images/shahnawaz.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/manrope-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script>try{const t=localStorage.getItem('portfolio-theme-v2');document.documentElement.dataset.theme=t==='light'?'light':'dark'}catch(e){}</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><nav class="container navigation" aria-label="Main navigation">
+  <a class="name-link" href="#home">Shahnawaz Aadil</a>
+  <div class="primary-nav" id="primary-nav"><a class="nav-link" href="#projects">Projects</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#about">About</a><a class="nav-link" href="#contact">Contact</a><a class="nav-resume" href="assets/documents/shahnawaz-aadil-resume.pdf" download>Resume ↗</a></div>
+  <div class="header-actions"><button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme"><svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 13A9 9 0 0 1 11 3.3 9 9 0 1 0 20.7 13Z"/></svg></button><button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+</nav></header><main id="main"><section class="hero container" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="intro">Hey, I'm</p>
+        <h1 id="hero-title">Shahnawaz Aadil<span>.</span></h1>
+        <div class="role-line"><span class="role-prefix" aria-hidden="true">I'm an</span><span class="typed-role" id="typed-role" aria-hidden="true">AI Engineer</span><span class="typing-cursor" aria-hidden="true">|</span><button class="animation-toggle" id="animation-toggle" type="button" aria-label="Pause role animation" aria-pressed="false" title="Pause role animation">Ⅱ</button><span class="sr-only">AI Engineer, Machine Learning Engineer, NLP Engineer, and Data Scientist.</span></div>
+        <p class="hero-description">I work with language models, machine learning, and data. Currently studying a Master of Artificial Intelligence at RMIT University in Melbourne.</p>
+        <div class="hero-actions"><a class="button primary-button" href="#projects">View my projects <span aria-hidden="true">↗</span></a><a class="button secondary-button" href="assets/documents/shahnawaz-aadil-resume.pdf" download>Download resume <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-links"><a href="https://github.com/shahnawazaadil7" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/shahnawazaadil/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><span class="location"><span aria-hidden="true">•</span> Melbourne, Australia</span></div>
       </div>
-    </header>
-    <main id="main">
-      <section class="hero container" id="home" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="status-dot" aria-hidden="true"></span> AI ENGINEER
-            &amp; DATA SCIENTIST
-          </p>
-          <h1 id="hero-title">
-            Turning ideas<br />into
-            <span class="accent-word"
-              >intelligence<svg
-                viewBox="0 0 510 18"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path d="M3 13Q245-7 506 9" /></svg></span
-            ><span class="hero-period">.</span>
-          </h1>
-          <p class="hero-description">
-            Hi, I’m <strong>Shahnawaz.</strong> I build with AI, make sense of
-            data, and turn curiosity into things that work.
-          </p>
-          <div class="hero-buttons">
-            <a class="button button-dark" href="#projects"
-              >Explore my work <span aria-hidden="true">↗</span></a
-            ><a
-              class="text-link"
-              data-resume
-              href="assets/documents/shahnawaz-aadil-resume.pdf"
-              download
-              >Download CV <span aria-hidden="true">↓</span></a
-            >
-          </div>
-          <div class="hero-location">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
-              <circle cx="12" cy="10" r="2.5" /></svg
-            ><span
-              >Based in Melbourne, Australia<br /><span class="muted"
-                >Open to graduate &amp; junior opportunities</span
-              ></span
-            >
-          </div>
-        </div>
-        <div
-          class="hero-art"
-          aria-label="Illustration of connected AI nodes turning an input into useful output"
-          role="img"
-        >
-          <div class="art-topline">
-            <span><i></i> A LITTLE HUMAN. A LITTLE MACHINE.</span
-            ><span>FIG. 01</span>
-          </div>
-          <div class="neural-visual">
-            <svg
-              class="neural-svg"
-              viewBox="0 0 500 430"
-              fill="none"
-              aria-hidden="true"
-            >
-              <defs>
-                <radialGradient id="orb-glow">
-                  <stop stop-color="#ed6948" stop-opacity=".18" />
-                  <stop offset="1" stop-color="#ed6948" stop-opacity="0" />
-                </radialGradient>
-              </defs>
-              <circle cx="250" cy="206" r="190" fill="url(#orb-glow)" />
-              <g class="orb-grid">
-                <ellipse cx="250" cy="206" rx="158" ry="157" />
-                <ellipse cx="250" cy="206" rx="112" ry="157" />
-                <ellipse cx="250" cy="206" rx="53" ry="157" />
-                <ellipse cx="250" cy="206" rx="158" ry="53" />
-                <ellipse cx="250" cy="206" rx="158" ry="112" />
-                <path d="M92 206h316M250 49v314" />
-                <ellipse
-                  cx="250"
-                  cy="206"
-                  rx="158"
-                  ry="77"
-                  transform="rotate(-38 250 206)"
-                />
-                <ellipse
-                  cx="250"
-                  cy="206"
-                  rx="158"
-                  ry="77"
-                  transform="rotate(38 250 206)"
-                />
-              </g>
-              <g class="neural-connections">
-                <path
-                  d="m110 134 89 18 51-79 48 80 91-19-44 99 13 67-108 48-110-48 17-67-47-99Zm89 18 51 54 48-53M157 233l93-27 95 27M140 300l110-94 108 94M250 73v275M110 134l235 99M389 134 157 233M199 152l-59 148M298 153l60 147M140 300h218"
-                />
-              </g>
-              <g class="neural-nodes">
-                <circle cx="110" cy="134" r="5" />
-                <circle cx="199" cy="152" r="5" />
-                <circle cx="250" cy="73" r="5" />
-                <circle cx="298" cy="153" r="5" />
-                <circle cx="389" cy="134" r="5" />
-                <circle cx="157" cy="233" r="5" />
-                <circle cx="345" cy="233" r="5" />
-                <circle cx="140" cy="300" r="5" />
-                <circle cx="358" cy="300" r="5" />
-                <circle cx="250" cy="348" r="5" />
-              </g>
-              <circle
-                class="orb-orbit"
-                cx="250"
-                cy="206"
-                r="189"
-                stroke-dasharray="2 9"
-              />
-              <g class="orb-center">
-                <rect x="216" y="172" width="68" height="68" rx="19" />
-                <path d="m234 206 10-14 9 28 13-20m-31 15 27-16" />
-              </g>
-              <g class="orb-satellites">
-                <circle cx="82" cy="290" r="4" />
-                <circle cx="429" cy="149" r="4" />
-                <path d="M415 282v12m-6-6h12M92 79v12m-6-6h12" />
-              </g>
-            </svg>
-            <div class="art-label art-label-one">
-              <span class="label-icon">↳</span
-              ><span>curiosity.py<br /><small>always running</small></span>
-            </div>
-            <div class="art-label art-label-two">
-              <span class="tiny-spark" aria-hidden="true">✳</span>
-              human-centered AI
-            </div>
-          </div>
-          <div class="art-bottomline">
-            <span
-              ><span class="status-dot" aria-hidden="true"></span> IDEAS IN.
-              POSSIBILITIES OUT.</span
-            ><span>∞</span>
-          </div>
-        </div>
-        <a class="scroll-hint" href="#projects"
-          ><span aria-hidden="true">↓</span> SCROLL TO EXPLORE</a
-        >
-      </section>
-      <div class="tool-strip">
-        <div class="container tool-strip-inner">
-          <p>MY EVERYDAY<br /><strong>BUILDING BLOCKS</strong></p>
-          <span class="strip-tool"
-            ><img
-              src="images/python.png"
-              width="28"
-              height="28"
-              alt=""
-            />Python</span
-          ><span class="strip-tool"
-            ><img
-              src="assets/icons/ollama.svg"
-              width="28"
-              height="28"
-              alt=""
-            />Ollama</span
-          ><span class="strip-tool"
-            ><img
-              src="assets/icons/deepseek.svg"
-              width="32"
-              height="28"
-              alt=""
-            />DeepSeek</span
-          ><span class="strip-tool"
-            ><img
-              src="assets/icons/react.svg"
-              width="28"
-              height="28"
-              alt=""
-            />React</span
-          ><span class="strip-tool"
-            ><img
-              src="assets/icons/typescript.svg"
-              width="25"
-              height="25"
-              alt=""
-            />TypeScript</span
-          ><span class="strip-tool"
-            ><img
-              src="assets/icons/scikitlearn.svg"
-              width="32"
-              height="28"
-              alt=""
-            />scikit-learn</span
-          >
-        </div>
-      </div>
-      <section
+      <figure class="portrait"><img src="images/shahnawaz.jpg" width="800" height="800" alt="Shahnawaz Aadil speaking at a lectern"><figcaption>Open to graduate &amp; junior opportunities</figcaption></figure>
+    </section><section
         class="section container work-section"
         id="projects"
         aria-labelledby="work-title"
@@ -304,15 +42,9 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow section-index">01 / SELECTED WORK</p>
-            <h2 id="work-title">
-              Built with curiosity.<br />Made to be
-              <span class="serif-word">useful.</span>
-            </h2>
+            <h2 id="work-title">Selected projects</h2>
           </div>
-          <p class="section-intro">
-            From local language models to recognizing a hand gesture. A few
-            explorations in making technology more helpful.
-          </p>
+          <p class="section-intro">A selection of my work in local AI, language models, computer vision, and data science.</p>
         </div>
         <div class="filter-row">
           <div
@@ -612,223 +344,7 @@
             >Meet me on GitHub <span aria-hidden="true">↗</span></a
           >
         </div>
-      </section>
-      <section class="lab-section" aria-labelledby="lab-title">
-        <div class="container lab-layout">
-          <div class="lab-copy">
-            <p class="eyebrow section-index">A LOOK UNDER THE HOOD</p>
-            <h2 id="lab-title">
-              Different problems.<br />Different kinds<br />of
-              <span class="serif-word">intelligence.</span>
-            </h2>
-            <p>
-              AI is more than a chat box. Explore three ideas behind my
-              projects, one small pipeline at a time.
-            </p>
-            <div
-              class="lab-tabs"
-              role="tablist"
-              aria-orientation="vertical"
-              aria-label="Explore AI approaches"
-            >
-              <button
-                class="lab-tab"
-                id="tab-local"
-                data-lab="local"
-                role="tab"
-                aria-controls="lab-local"
-                aria-selected="true"
-                type="button"
-              >
-                01 <span>Local AI</span> ↗</button
-              ><button
-                class="lab-tab"
-                id="tab-rag"
-                data-lab="rag"
-                role="tab"
-                aria-controls="lab-rag"
-                aria-selected="false"
-                tabindex="-1"
-                type="button"
-              >
-                02 <span>Retrieval + generation</span> ↗</button
-              ><button
-                class="lab-tab"
-                id="tab-vision"
-                data-lab="vision"
-                role="tab"
-                aria-controls="lab-vision"
-                aria-selected="false"
-                tabindex="-1"
-                type="button"
-              >
-                03 <span>Computer vision</span> ↗
-              </button>
-            </div>
-          </div>
-          <div class="lab-demo">
-            <div
-              class="lab-panel"
-              id="lab-local"
-              role="tabpanel"
-              tabindex="0"
-              aria-labelledby="tab-local"
-            >
-              <div class="lab-panel-header">
-                <span>LOCAL INFERENCE</span
-                ><span class="terminal-dots" aria-hidden="true">● ● ●</span>
-              </div>
-              <div class="pipeline">
-                <div class="pipeline-step">
-                  <span class="pipeline-icon">↳</span>
-                  <div>
-                    <small>01 / INPUT</small><strong>Your prompt</strong
-                    ><span>A question, an idea, a starting point.</span>
-                  </div>
-                </div>
-                <div class="pipeline-connector" aria-hidden="true">
-                  ↓ <span>stays on your machine</span>
-                </div>
-                <div class="pipeline-step highlight">
-                  <img
-                    class="pipeline-brand"
-                    src="assets/icons/ollama.svg"
-                    width="38"
-                    height="38"
-                    alt=""
-                  />
-                  <div>
-                    <small>02 / PROCESS</small
-                    ><strong>A local model, via Ollama</strong
-                    ><span>Choose the model to fit the task.</span>
-                  </div>
-                  <span class="live-dot" aria-hidden="true"></span>
-                </div>
-                <div class="pipeline-connector" aria-hidden="true">
-                  ↓ <span>streamed, token by token</span>
-                </div>
-                <div class="pipeline-step">
-                  <span class="pipeline-icon">✳</span>
-                  <div>
-                    <small>03 / OUTPUT</small
-                    ><strong>A response in your workspace</strong
-                    ><span>Your conversation, under your control.</span>
-                  </div>
-                </div>
-              </div>
-              <p class="lab-caption">
-                THE IDEA BEHIND <strong>HEARTH</strong>
-                <span>Concept illustration</span>
-              </p>
-            </div>
-            <div
-              class="lab-panel"
-              id="lab-rag"
-              role="tabpanel"
-              tabindex="0"
-              aria-labelledby="tab-rag"
-              hidden
-            >
-              <div class="lab-panel-header">
-                <span>RETRIEVAL-AUGMENTED GENERATION</span
-                ><span class="terminal-dots" aria-hidden="true">● ● ●</span>
-              </div>
-              <div class="pipeline">
-                <div class="pipeline-step">
-                  <span class="pipeline-icon">≡</span>
-                  <div>
-                    <small>01 / INDEX</small
-                    ><strong>Start with your documents</strong
-                    ><span>Split text into chunks and embed them.</span>
-                  </div>
-                </div>
-                <div class="pipeline-connector" aria-hidden="true">
-                  ↓ <span>find relevant context</span>
-                </div>
-                <div class="pipeline-step highlight">
-                  <span class="pipeline-icon">⌕</span>
-                  <div>
-                    <small>02 / RETRIEVE</small
-                    ><strong>Search before answering</strong
-                    ><span>Match the question to relevant passages.</span>
-                  </div>
-                </div>
-                <div class="pipeline-connector" aria-hidden="true">
-                  ↓ <span>question + retrieved passages</span>
-                </div>
-                <div class="pipeline-step">
-                  <img
-                    class="pipeline-brand"
-                    src="assets/icons/deepseek.svg"
-                    width="38"
-                    height="38"
-                    alt=""
-                  />
-                  <div>
-                    <small>03 / GENERATE</small
-                    ><strong>Give the model some context</strong
-                    ><span>Generate a document-grounded answer.</span>
-                  </div>
-                </div>
-              </div>
-              <p class="lab-caption">
-                THE IDEA BEHIND <strong>DOCUMENT ANALYSIS</strong>
-                <span>Concept illustration</span>
-              </p>
-            </div>
-            <div
-              class="lab-panel"
-              id="lab-vision"
-              role="tabpanel"
-              tabindex="0"
-              aria-labelledby="tab-vision"
-              hidden
-            >
-              <div class="lab-panel-header">
-                <span>FROM PIXELS TO PATTERNS</span
-                ><span class="terminal-dots" aria-hidden="true">● ● ●</span>
-              </div>
-              <div class="pipeline">
-                <div class="pipeline-step">
-                  <span class="pipeline-icon">▣</span>
-                  <div>
-                    <small>01 / CAPTURE</small
-                    ><strong>A hand gesture on camera</strong
-                    ><span>Start with an image of the hand.</span>
-                  </div>
-                </div>
-                <div class="pipeline-connector" aria-hidden="true">
-                  ↓ <span>MediaPipe hand landmarks</span>
-                </div>
-                <div class="pipeline-step highlight">
-                  <span class="pipeline-icon">⠿</span>
-                  <div>
-                    <small>02 / EXTRACT</small
-                    ><strong>Find the key points</strong
-                    ><span>Represent hand position as landmarks.</span>
-                  </div>
-                </div>
-                <div class="pipeline-connector" aria-hidden="true">
-                  ↓ <span>dense neural network</span>
-                </div>
-                <div class="pipeline-step">
-                  <span class="pipeline-icon">Aa</span>
-                  <div>
-                    <small>03 / CLASSIFY</small
-                    ><strong>Recognize the sign</strong
-                    ><span>Map the pattern to a learned gesture.</span>
-                  </div>
-                </div>
-              </div>
-              <p class="lab-caption">
-                THE IDEA BEHIND <strong>SIGNIFY AI</strong>
-                <span>Concept illustration</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
+      </section><section
         class="section container skills-section"
         id="skills"
         aria-labelledby="skills-title"
@@ -836,15 +352,9 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow section-index">02 / THE TOOLKIT</p>
-            <h2 id="skills-title">
-              Good ideas need<br />the right
-              <span class="serif-word">tools.</span>
-            </h2>
+            <h2 id="skills-title">Skills &amp; tools</h2>
           </div>
-          <p class="section-intro">
-            A growing toolkit across AI, data, and software. Chosen for the
-            problem, and always open to something new.
-          </p>
+          <p class="section-intro">The technologies I use to explore data, train models, and build applications.</p>
         </div>
         <div class="skill-grid">
           <article class="skill-group">
@@ -948,134 +458,21 @@
             >My education <span aria-hidden="true">↗</span></a
           >
         </div>
-      </section>
-      <section class="about-section" id="about" aria-labelledby="about-title">
-        <div class="container about-layout">
-          <div class="portrait-wrap">
-            <img
-              src="images/shahnawaz.jpg"
-              width="800"
-              height="800"
-              loading="lazy"
-              alt="Shahnawaz Aadil speaking at a lectern"
-            /><span class="portrait-caption"
-              ><span>SHAHNAWAZ AADIL</span><span>MELBOURNE, AU ↗</span></span
-            ><span class="portrait-sticker" aria-hidden="true"
-              >stay<br /><em>curious.</em> ✳</span
-            >
-          </div>
-          <div class="about-copy">
-            <p class="eyebrow section-index">03 / THE HUMAN BEHIND THE CODE</p>
-            <h2 id="about-title">
-              A technical mind.<br />A
-              <span class="serif-word">human</span> approach.
-            </h2>
-            <p>
-              I’m Shahnawaz Aadil Mohammad, a computer science and data science
-              graduate now studying AI at RMIT in Melbourne.
-            </p>
-            <p>
-              I enjoy the part where an interesting idea becomes something
-              someone can actually use. That’s taken me from hand-sign
-              recognition and predictive models to local AI assistants and
-              retrieval-augmented generation.
-            </p>
-            <p>
-              My experience spans software development, hands-on technical
-              support, and leading community volunteer teams. Different
-              settings, same instinct: understand the problem, keep learning,
-              and make something useful.
-            </p>
-            <a
-              class="text-link"
-              href="https://www.linkedin.com/in/shahnawazaadil/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >A little more on LinkedIn <span aria-hidden="true">↗</span></a
-            >
-          </div>
-        </div>
-        <div class="container journey-grid">
-          <div id="experience">
-            <p class="eyebrow section-index">EXPERIENCE</p>
-            <article class="timeline-item">
-              <div class="timeline-date">FEB 2026 — PRESENT</div>
-              <h3>Phone Repair Technician</h3>
-              <p class="timeline-place">
-                Supreme Fone Fix · Victoria, Australia
-              </p>
-              <p>
-                Independent hardware and software diagnosis, customer technical
-                support, and daily kiosk operations.
-              </p>
-            </article>
-            <article class="timeline-item">
-              <div class="timeline-date">DEC 2024 — JUN 2025</div>
-              <h3>Software Development Intern</h3>
-              <p class="timeline-place">
-                ADVI Group of Companies · Hyderabad, India
-              </p>
-              <p>
-                Generative AI development and applied machine learning in a
-                software development setting.
-              </p>
-            </article>
-          </div>
-          <div id="education">
-            <p class="eyebrow section-index">EDUCATION</p>
-            <article class="timeline-item">
-              <div class="timeline-date">EXPECTED DEC 2027</div>
-              <h3>Master of Artificial Intelligence</h3>
-              <p class="timeline-place">
-                RMIT University · Melbourne, Australia
-              </p>
-              <span class="small-badge">CURRENTLY STUDYING</span>
-            </article>
-            <article class="timeline-item">
-              <div class="timeline-date">GRADUATED JUN 2025</div>
-              <h3>B.E. Computer Science &amp; Data Science</h3>
-              <p class="timeline-place">
-                Lords Institute of Engineering and Technology
-              </p>
-              <span class="degree-score">9.23 <span>/ 10 CGPA</span></span>
-            </article>
-          </div>
-        </div>
-        <div class="container credentials">
-          <div>
-            <span class="credential-icon" aria-hidden="true">↗</span>
-            <p>
-              <strong>Learning beyond the classroom</strong
-              ><span
-                >IBM Professional Data Science Certificate · NPTEL Data Science
-                for Engineers &amp; Introduction to Machine Learning</span
-              >
-            </p>
-          </div>
-          <div>
-            <span class="credential-icon" aria-hidden="true">✳</span>
-            <p>
-              <strong>Showing up for the community</strong
-              ><span
-                >Vice President, Lions Club International · Aug 2023 – Jul
-                2025</span
-              >
-            </p>
-          </div>
-        </div>
-      </section>
-      <section
+      </section><section class="about-section" id="about" aria-labelledby="about-title"><div class="container">
+<div class="section-heading"><div><p class="eyebrow section-index">03 / ABOUT &amp; EDUCATION</p><h2 id="about-title">A little about me.</h2></div><p class="section-intro">Computer science graduate. AI student. Learning by building.</p></div>
+<div class="bio-columns"><p>I’m Shahnawaz Aadil Mohammad, a computer science and data science graduate now studying a Master of Artificial Intelligence at RMIT University in Melbourne.</p><p>I enjoy turning ideas into practical applications. My interests include local language models, retrieval-augmented generation, natural language processing, and computer vision.</p></div>
+<div class="education-grid" id="education"><article class="education-card"><div class="education-top"><span class="education-symbol" aria-hidden="true">↗</span><span class="small-badge">CURRENTLY STUDYING</span></div><p class="timeline-date">EXPECTED DEC 2027</p><h3>Master of Artificial Intelligence</h3><p class="university">RMIT University</p><p class="education-location">Melbourne, Australia</p></article><article class="education-card"><div class="education-top"><span class="education-symbol" aria-hidden="true">⌘</span><span class="degree-score">9.23 <span>/ 10 CGPA</span></span></div><p class="timeline-date">GRADUATED JUN 2025</p><h3>B.E. Computer Science &amp; Data Science</h3><p class="university">Lords Institute of Engineering and Technology</p><p class="education-location">Hyderabad, India</p></article></div>
+<div class="credentials"><div><span class="credential-icon" aria-hidden="true">↗</span><p><strong>Continuing to learn</strong><span>IBM Professional Data Science Certificate · NPTEL Data Science for Engineers &amp; Introduction to Machine Learning</span></p></div><div><span class="credential-icon" aria-hidden="true">✳</span><p><strong>Community &amp; leadership</strong><span>Vice President, Lions Club International · Aug 2023 – Jul 2025</span></p></div></div>
+</div></section><section class="section container profiles-section" id="profiles" aria-labelledby="profiles-title"><div class="section-heading"><div><p class="eyebrow section-index">04 / AROUND THE WEB</p><h2 id="profiles-title">What I’m working on.</h2></div><a class="text-link" href="https://github.com/shahnawazaadil7" target="_blank" rel="noopener noreferrer">All repositories <span aria-hidden="true">↗</span></a></div>
+<div class="profiles-layout"><div class="github-feed"><div class="feed-heading"><span class="eyebrow">RECENT PUBLIC REPOSITORIES</span><span class="feed-status" id="repo-status" role="status">Latest saved GitHub snapshot</span></div><div class="repo-grid" id="repo-grid"><a class="repo-card" href="https://github.com/shahnawazaadil7/shahnawazaadil7.github.io" target="_blank" rel="noopener noreferrer"><div class="repo-top"><span class="repo-symbol" aria-hidden="true">⌘</span><span aria-hidden="true">↗</span></div><h3>shahnawazaadil7.github.io</h3><p>Explore the source code and project details on GitHub.</p><div class="repo-meta"><span>CSS</span><span>☆ 0</span></div></a><a class="repo-card" href="https://github.com/shahnawazaadil7/shahnawazaadil7" target="_blank" rel="noopener noreferrer"><div class="repo-top"><span class="repo-symbol" aria-hidden="true">⌘</span><span aria-hidden="true">↗</span></div><h3>shahnawazaadil7</h3><p>My reppo</p><div class="repo-meta"><span>Repository</span><span>☆ 0</span></div></a><a class="repo-card" href="https://github.com/shahnawazaadil7/datasets" target="_blank" rel="noopener noreferrer"><div class="repo-top"><span class="repo-symbol" aria-hidden="true">⌘</span><span aria-hidden="true">↗</span></div><h3>datasets</h3><p>Explore the source code and project details on GitHub.</p><div class="repo-meta"><span>Repository</span><span>☆ 2</span></div></a><a class="repo-card" href="https://github.com/shahnawazaadil7/ADVI" target="_blank" rel="noopener noreferrer"><div class="repo-top"><span class="repo-symbol" aria-hidden="true">⌘</span><span aria-hidden="true">↗</span></div><h3>ADVI</h3><p>Explore the source code and project details on GitHub.</p><div class="repo-meta"><span>Jupyter Notebook</span><span>☆ 0</span></div></a><a class="repo-card" href="https://github.com/shahnawazaadil7/Signify-AI-Interactive-Hand-Sign-Recognition-Model" target="_blank" rel="noopener noreferrer"><div class="repo-top"><span class="repo-symbol" aria-hidden="true">⌘</span><span aria-hidden="true">↗</span></div><h3>Signify-AI-Interactive-Hand-Sign-Recognition-Model</h3><p>Explore the source code and project details on GitHub.</p><div class="repo-meta"><span>Python</span><span>☆ 0</span></div></a><a class="repo-card" href="https://github.com/shahnawazaadil7/Generating-Synthetic-Images-using-CNN-RNN" target="_blank" rel="noopener noreferrer"><div class="repo-top"><span class="repo-symbol" aria-hidden="true">⌘</span><span aria-hidden="true">↗</span></div><h3>Generating-Synthetic-Images-using-CNN-RNN</h3><p>Explore the source code and project details on GitHub.</p><div class="repo-meta"><span>Python</span><span>☆ 0</span></div></a></div></div><aside class="linkedin-card" aria-labelledby="linkedin-title"><div class="linkedin-top"><span class="linkedin-wordmark">LinkedIn</span><span aria-hidden="true">↗</span></div><img class="profile-avatar" src="images/shahnawaz.jpg" width="80" height="80" loading="lazy" alt="Shahnawaz Aadil"><h3 id="linkedin-title">Shahnawaz Aadil</h3><p class="profile-headline">AI &amp; Data Science<br>Master of Artificial Intelligence at RMIT</p><p class="profile-location">Melbourne, Australia</p><div class="profile-topics"><span>Artificial intelligence</span><span>Machine learning</span><span>Data science</span></div><a class="button button-dark" href="https://www.linkedin.com/in/shahnawazaadil/" target="_blank" rel="noopener noreferrer">View my profile <span aria-hidden="true">↗</span></a><p class="profile-footnote">Professional profile overview</p></aside></div></section><section
         class="contact-section"
         id="contact"
         aria-labelledby="contact-title"
       >
         <div class="container contact-layout">
           <div class="contact-copy">
-            <p class="eyebrow section-index">04 / LET’S CONNECT</p>
-            <h2 id="contact-title">
-              Good things start<br />with a
-              <span class="serif-word">conversation.</span>
-            </h2>
+            <p class="eyebrow section-index">05 / LET’S CONNECT</p>
+            <h2 id="contact-title">Get in touch</h2>
             <p>
               Have a role, a project, or an interesting problem?<br />I’d love
               to hear about it.
@@ -1175,55 +572,8 @@
             <p id="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="container footer-top">
-        <a class="brand" href="#home"
-          ><span class="brand-mark">sa<span>.</span></span
-          ><span class="brand-name"
-            >A work in progress.<br /><span class="muted"
-              >Just like the person behind it.</span
-            ></span
-          ></a
-        >
-        <div class="footer-links" id="links" aria-label="More profiles">
-          <a
-            href="https://medium.com/@shahnawazaadil"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Medium ↗</a
-          ><a
-            href="https://www.hackerrank.com/profile/shahnawazaadil7"
-            target="_blank"
-            rel="noopener noreferrer"
-            >HackerRank ↗</a
-          ><a
-            href="https://x.com/shahnawazaadil7"
-            target="_blank"
-            rel="noopener noreferrer"
-            >X ↗</a
-          ><a href="assets/documents/shahnawaz-aadil-resume.pdf" download
-            >Resume ↓</a
-          >
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <span>© <span id="year">2026</span> Shahnawaz Aadil</span
-        ><span>BUILT WITH INTENTION. FUELED BY CURIOSITY.</span
-        ><a href="#home">Back to top ↑</a>
-      </div>
-    </footer>
-    <button
-      class="back-to-top icon-button"
-      id="back-to-top"
-      type="button"
-      aria-label="Back to top"
-      hidden
-    >
-      ↑
-    </button>
-    <dialog
+      </section></main><footer class="site-footer"><div class="container footer-top"><a class="footer-name" href="#home">Shahnawaz Aadil<span>AI · Machine Learning · Data Science</span></a><div class="footer-links" id="links"><a href="https://medium.com/@shahnawazaadil" target="_blank" rel="noopener noreferrer">Medium ↗</a><a href="https://www.hackerrank.com/profile/shahnawazaadil7" target="_blank" rel="noopener noreferrer">HackerRank ↗</a><a href="https://x.com/shahnawazaadil7" target="_blank" rel="noopener noreferrer">X ↗</a><a href="assets/documents/shahnawaz-aadil-resume.pdf" download>Resume ↓</a></div></div><div class="container footer-bottom"><span>© <span id="year">2026</span> Shahnawaz Aadil</span><span>Melbourne, Australia</span><a href="#home">Back to top ↑</a></div></footer>
+<button class="back-to-top icon-button" id="back-to-top" type="button" aria-label="Back to top" hidden>↑</button><dialog
       class="project-dialog"
       id="project-dialog"
       aria-labelledby="dialog-title"
@@ -1251,42 +601,5 @@
         >View source <span aria-hidden="true">↗</span></a
       >
     </dialog>
-    <dialog
-      class="search-dialog"
-      id="search-dialog"
-      aria-labelledby="search-title"
-    >
-      <div class="search-dialog-top">
-        <p class="eyebrow" id="search-title">EXPLORE THE PORTFOLIO</p>
-        <button
-          class="icon-button dialog-close"
-          type="button"
-          data-close-dialog
-          aria-label="Close search"
-        >
-          ×
-        </button>
-      </div>
-      <label class="sr-only" for="portfolio-search"
-        >Search projects, skills, and experience</label
-      ><input
-        type="search"
-        id="portfolio-search"
-        placeholder="Try “local AI” or “experience”…"
-        autocomplete="off"
-      />
-      <div class="search-suggestions">
-        <button type="button" data-query="local AI">Local AI</button
-        ><button type="button" data-query="RAG">RAG</button
-        ><button type="button" data-query="education">Education</button
-        ><button type="button" data-query="resume">Resume</button>
-      </div>
-      <p id="search-status" class="search-status" role="status"></p>
-      <ul id="search-results"></ul>
-      <div class="search-disclaimer">
-        Local keyword search · No model calls or data sent
-        <kbd>ESC to close</kbd>
-      </div>
-    </dialog>
-  </body>
+</body>
 </html>

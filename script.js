@@ -17,7 +17,7 @@
   const systemTheme = window.matchMedia?.("(prefers-color-scheme: dark)");
   let savedTheme = null;
   try {
-    savedTheme = localStorage.getItem("portfolio-theme");
+    savedTheme = localStorage.getItem("portfolio-theme-v2");
   } catch {
     /* Optional preference. */
   }
@@ -29,20 +29,18 @@
     themeButton?.setAttribute("title", label);
     themeButton?.setAttribute("aria-pressed", String(theme === "dark"));
   };
-  applyTheme(savedTheme || (systemTheme?.matches ? "dark" : "light"));
+  applyTheme(savedTheme || "dark");
   themeButton?.addEventListener("click", () => {
     savedTheme =
       document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     applyTheme(savedTheme);
     try {
-      localStorage.setItem("portfolio-theme", savedTheme);
+      localStorage.setItem("portfolio-theme-v2", savedTheme);
     } catch {
       /* Keep the in-session choice. */
     }
   });
-  systemTheme?.addEventListener?.("change", (event) => {
-    if (!savedTheme) applyTheme(event.matches ? "dark" : "light");
-  });
+
 
   const menuButton = $("#menu-toggle");
   const navigation = $("#primary-nav");
@@ -280,280 +278,6 @@
     }),
   );
 
-  const tabs = $$(".lab-tab[data-lab]");
-  const selectTab = (tab, moveFocus = false) => {
-    tabs.forEach((candidate) => {
-      const selected = candidate === tab;
-      candidate.setAttribute("aria-selected", String(selected));
-      candidate.tabIndex = selected ? 0 : -1;
-      const panel = document.getElementById(
-        candidate.getAttribute("aria-controls") ||
-          `lab-${candidate.dataset.lab}`,
-      );
-      if (panel) panel.hidden = !selected;
-    });
-    if (moveFocus) tab.focus();
-  };
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => selectTab(tab));
-    tab.addEventListener("keydown", (event) => {
-      let next;
-      if (event.key === "ArrowRight" || event.key === "ArrowDown")
-        next = (index + 1) % tabs.length;
-      else if (event.key === "ArrowLeft" || event.key === "ArrowUp")
-        next = (index - 1 + tabs.length) % tabs.length;
-      else if (event.key === "Home") next = 0;
-      else if (event.key === "End") next = tabs.length - 1;
-      else return;
-      event.preventDefault();
-      selectTab(tabs[next], true);
-    });
-  });
-  if (tabs.length)
-    selectTab(
-      tabs.find((tab) => tab.getAttribute("aria-selected") === "true") ||
-        tabs[0],
-    );
-
-  // Local keyword search only; it does not call a model or a remote service.
-  const knowledge = [
-    {
-      title: "Hearth — a local-first AI assistant",
-      category: "Project",
-      href: "#projects",
-      keywords:
-        "hearth local offline ollama llm llms model models assistant react typescript streaming rest chat profiles conversation history context",
-      excerpt:
-        "Ollama, React and TypeScript. Streamed responses, searchable history, editing, regeneration and per-chat context.",
-    },
-    {
-      title: "AI Coding Assistant & Document Analysis",
-      category: "Project",
-      href: "#projects",
-      keywords:
-        "ai coding code assistant deepseek r1 1.5b rag retrieval augmented generation documents pdf question answering debugging completion llm llms model models",
-      excerpt:
-        "DeepSeek R1 1.5B for code completion and debugging, with RAG document question answering.",
-    },
-    {
-      title: "Signify AI — hand-sign recognition",
-      category: "Project",
-      href: "#projects",
-      keywords:
-        "signify vision computer sign language hand recognition mediapipe neural networks images sih hackathon 2024 team",
-      excerpt:
-        "MediaPipe hand landmarks and dense neural networks. A six-person SIH 2024 project using 57,600 images.",
-    },
-    {
-      title: "Skills & tools",
-      category: "Skills",
-      href: "#skills",
-      keywords:
-        "skills tools stack python sql machine learning ai artificial intelligence genai generative deep learning data science analysis visualization react typescript ollama deepseek mediapipe",
-      excerpt:
-        "Explore skills across generative AI, machine learning, data science and application development.",
-    },
-    {
-      title: "Master of Artificial Intelligence at RMIT",
-      category: "Education",
-      href: "#education",
-      keywords:
-        "education university rmit melbourne australia master masters ai artificial intelligence study studying postgraduate graduation 2027",
-      excerpt:
-        "Master of Artificial Intelligence at RMIT University, with completion expected in December 2027.",
-    },
-    {
-      title: "Computer Science degree — Data Science",
-      category: "Education",
-      href: "#education",
-      keywords:
-        "education degree bachelor bachelors engineering btech beng computer science data cgpa 9.23 june 2025 undergraduate",
-      excerpt:
-        "Bachelor of Engineering in Computer Science, specialising in Data Science. Completed June 2025 with a 9.23 CGPA.",
-    },
-    {
-      title: "Software Development Intern at ADVI Group of Companies",
-      category: "Experience",
-      href: "#experience",
-      keywords:
-        "experience internship intern work software development advi group companies genai generative ai december 2024 june 2025 career",
-      excerpt:
-        "Software Development Intern at ADVI Group of Companies, December 2024 to June 2025, working on generative AI and applied machine learning.",
-    },
-    {
-      title: "Phone Repair Technician at Supreme Fone Fix",
-      category: "Experience",
-      href: "#experience",
-      keywords:
-        "experience current now job work phone repair technician supreme fone fix supremefonefix february 2026 troubleshooting technical customer",
-      excerpt:
-        "Phone Repair Technician at Supreme Fone Fix, from February 2026. Hardware and software diagnosis, customer technical support and daily kiosk operations.",
-    },
-    {
-      title: "Winning the Space Race",
-      category: "Project",
-      href: "#projects",
-      keywords:
-        "space spacex launch race prediction classification historical data science analysis",
-      excerpt:
-        "Historical launch data analysis and classification for launch outcome prediction.",
-    },
-    {
-      title: "Weather Forecasting",
-      category: "Project",
-      href: "#projects",
-      keywords:
-        "weather forecast forecasting regression decision tree gradient boosting regressor feature engineering kaggle",
-      excerpt:
-        "Decision tree and gradient boosting regression, with feature engineering and data plots.",
-    },
-    {
-      title: "Contact & profiles",
-      category: "Contact",
-      href: "#contact",
-      keywords:
-        "contact email hire hiring available collaborate collaboration github linkedin shahnawaz aadil",
-      excerpt: `Get in touch at ${email}, or explore the professional profile links.`,
-    },
-  ];
-  const resumeLink = $("[data-resume]");
-  if (resumeLink?.getAttribute("href"))
-    knowledge.push({
-      title: "Download resume (.pdf)",
-      category: "Resume",
-      href: resumeLink.getAttribute("href"),
-      download: true,
-      keywords: "resume cv download pdf qualifications background",
-      excerpt: "Download Shahnawaz Aadil’s current resume as a PDF.",
-    });
-  const searchDialog = $("#search-dialog");
-  const searchInput = $("#portfolio-search");
-  const results = $("#search-results");
-  const stopWords = new Set(
-    "a an and are as at be by can do does for from has have how i in is it me my of on or please tell that the their there these this to was were what when where which who will with would you your about show used uses using".split(
-      " ",
-    ),
-  );
-  const normalize = (text) =>
-    text
-      .toLowerCase()
-      .normalize("NFKD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9.]+/g, " ")
-      .trim();
-  const renderSearch = () => {
-    if (!searchInput || !results) return;
-    const query = normalize(searchInput.value);
-    const tokens = [
-      ...new Set(
-        query.split(/\s+/).filter((token) => token && !stopWords.has(token)),
-      ),
-    ];
-    let matches;
-    if (!query) matches = knowledge.slice(0, 4);
-    else if (!tokens.length) matches = [];
-    else
-      matches = knowledge
-        .map((entry, index) => {
-          const text = normalize(
-            `${entry.title} ${entry.keywords} ${entry.excerpt}`,
-          );
-          const title = normalize(entry.title);
-          const hits = tokens.filter((token) => text.includes(token));
-          return {
-            entry,
-            index,
-            score:
-              hits.length * 4 +
-              hits.filter((token) => title.includes(token)).length * 3 +
-              (text.includes(query) ? 5 : 0),
-          };
-        })
-        .filter((match) => match.score > 0)
-        .sort((a, b) => b.score - a.score || a.index - b.index)
-        .slice(0, 6)
-        .map((match) => match.entry);
-    results.replaceChildren();
-    matches.forEach((entry) => {
-      const item = document.createElement("li");
-      const link = document.createElement("a");
-      link.className = "search-result";
-      link.href = entry.href;
-      if (entry.download) link.setAttribute("download", "");
-      const category = document.createElement("span");
-      category.className = "search-result-category";
-      category.textContent = entry.category;
-      const title = document.createElement("strong");
-      title.className = "search-result-title";
-      title.textContent = entry.title;
-      const excerpt = document.createElement("span");
-      excerpt.className = "search-result-description";
-      excerpt.textContent = entry.excerpt;
-      link.append(category, title, excerpt);
-      link.addEventListener("click", (event) => {
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
-          return;
-        if (entry.href === "#projects") filterProjects("all");
-        if (entry.href.startsWith("#") && searchDialog) {
-          const destination = document.getElementById(entry.href.slice(1));
-          if (destination) {
-            event.preventDefault();
-            destinations.set(searchDialog, destination);
-            if (location.hash !== entry.href)
-              history.pushState(null, "", entry.href);
-            setActiveLink(destination.id);
-          }
-        }
-        searchDialog?.close();
-      });
-      item.append(link);
-      results.append(item);
-    });
-    if (!matches.length) {
-      const item = document.createElement("li");
-      item.className = "search-empty";
-      item.textContent =
-        "No matching portfolio entries. Try “Ollama”, “RAG”, “Python” or “education”.";
-      results.append(item);
-    }
-    setText(
-      "#search-status",
-      query
-        ? `${matches.length} ${matches.length === 1 ? "result" : "results"} for “${searchInput.value.trim()}”.`
-        : "Explore these portfolio highlights, or enter a keyword.",
-    );
-  };
-  const openSearch = (opener) => {
-    if (openDialog(searchDialog, opener)) {
-      renderSearch();
-      searchInput?.focus();
-      searchInput?.select();
-    }
-  };
-  $$("[data-open-search]").forEach((button) =>
-    button.addEventListener("click", () => openSearch(button)),
-  );
-  searchInput?.addEventListener("input", renderSearch);
-  $$("[data-query]").forEach((button) =>
-    button.addEventListener("click", () => {
-      if (!searchInput) return;
-      searchInput.value = button.dataset.query;
-      renderSearch();
-      searchInput.focus();
-    }),
-  );
-  document.addEventListener("keydown", (event) => {
-    if (
-      (event.metaKey || event.ctrlKey) &&
-      event.key.toLowerCase() === "k" &&
-      !event.altKey &&
-      !$("dialog[open]")
-    ) {
-      event.preventDefault();
-      openSearch(document.activeElement);
-    }
-  });
-
   const copyButton = $("#copy-email");
   copyButton?.addEventListener("click", async () => {
     const status = $("#copy-status");
@@ -636,6 +360,61 @@
       }
     });
 
+  const role = document.getElementById('typed-role');
+  const toggle = document.getElementById('animation-toggle');
+  const prefix = document.querySelector('.role-prefix');
+  const roles = ['AI Engineer', 'Machine Learning Engineer', 'NLP Engineer', 'Data Scientist'];
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let index = 0;
+  let position = roles[0].length;
+  let deleting = true;
+  let paused = false;
+  let timer;
+
+  const tick = () => {
+    if (!role || paused || motion.matches || document.hidden) return;
+    const title = roles[index];
+    position += deleting ? -1 : 1;
+    role.textContent = title.slice(0, position);
+    if (position === 0 && deleting) {
+      index = (index + 1) % roles.length;
+      deleting = false;
+      if (prefix) prefix.textContent = roles[index].startsWith('AI') || roles[index].startsWith('NLP') ? "I'm an" : "I'm a";
+      timer = setTimeout(tick, 250);
+    } else if (position === title.length && !deleting) {
+      deleting = true;
+      timer = setTimeout(tick, 1800);
+    } else {
+      timer = setTimeout(tick, deleting ? 42 : 80);
+    }
+  };
+  const restart = () => {
+    clearTimeout(timer);
+    if (toggle) toggle.hidden = motion.matches;
+    if (!motion.matches && !paused && !document.hidden && role) timer = setTimeout(tick, 1800);
+  };
+  toggle?.addEventListener('click', () => {
+    paused = !paused;
+    toggle.setAttribute('aria-pressed', String(paused));
+    toggle.setAttribute('aria-label', paused ? 'Resume role animation' : 'Pause role animation');
+    toggle.title = paused ? 'Resume role animation' : 'Pause role animation';
+    toggle.textContent = paused ? '▶' : 'Ⅱ';
+    restart();
+  });
+  motion.addEventListener('change', () => {
+    if (motion.matches && role) {
+      index = 0;
+      position = roles[0].length;
+      deleting = true;
+      role.textContent = roles[0];
+      if (prefix) prefix.textContent = "I'm an";
+    }
+    restart();
+  });
+  document.addEventListener('visibilitychange', restart);
+  restart();
+
+
   setText("#year", String(new Date().getFullYear()));
   const navLinks = $$('.nav-link[href^="#"]');
   const setActiveLink = (id) =>
@@ -685,4 +464,92 @@
       });
     });
   }
+})();
+
+// Recent public work, refreshed when the repository section comes into view.
+(() => {
+  const grid = document.getElementById('repo-grid');
+  const status = document.getElementById('repo-status');
+  if (!grid) return;
+  const username = 'shahnawazaadil7';
+  const cacheKey = 'portfolio-public-repos-v1';
+  const maxAge = 30 * 60 * 1000;
+  const fields = repository => ({
+    name: String(repository.name || 'Repository'),
+    description: String(repository.description || 'Explore the source code and project details on GitHub.').slice(0, 190),
+    language: String(repository.language || 'Repository'),
+    stars: Number(repository.stargazers_count) || 0,
+    url: `https://github.com/${username}/${encodeURIComponent(repository.name)}`,
+  });
+  const render = repositories => {
+    const cards = repositories.slice(0, 6).map(repository => {
+      const item = fields(repository);
+      const card = document.createElement('a');
+      card.className = 'repo-card';
+      card.href = item.url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      const top = document.createElement('div');
+      top.className = 'repo-top';
+      const icon = document.createElement('span');
+      icon.className = 'repo-symbol';
+      icon.textContent = '⌘';
+      icon.setAttribute('aria-hidden', 'true');
+      const arrow = document.createElement('span');
+      arrow.textContent = '↗';
+      arrow.setAttribute('aria-hidden', 'true');
+      top.append(icon, arrow);
+      const title = document.createElement('h3');
+      title.textContent = item.name;
+      const description = document.createElement('p');
+      description.textContent = item.description;
+      const meta = document.createElement('div');
+      meta.className = 'repo-meta';
+      const language = document.createElement('span');
+      language.textContent = item.language;
+      const stars = document.createElement('span');
+      stars.textContent = `☆ ${item.stars}`;
+      stars.setAttribute('aria-label', `${item.stars} GitHub stars`);
+      meta.append(language, stars);
+      card.append(top, title, description, meta);
+      return card;
+    });
+    if (cards.length) grid.replaceChildren(...cards);
+  };
+  const load = async () => {
+    let cached;
+    try { cached = JSON.parse(localStorage.getItem(cacheKey) || 'null'); } catch {}
+    if (Array.isArray(cached?.repos) && cached.repos.length) {
+      render(cached.repos);
+      if (status) status.textContent = 'Recently cached from GitHub';
+      if (Date.now() - cached.savedAt < maxAge) return;
+    }
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 9000);
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&per_page=30&type=owner`, {
+        signal: controller.signal,
+        headers: { Accept: 'application/vnd.github+json' },
+        credentials: 'omit',
+      });
+      if (!response.ok) throw new Error('GitHub unavailable');
+      const data = await response.json();
+      if (!Array.isArray(data)) throw new Error('Unexpected GitHub response');
+      const repos = data.filter(repo => !repo.fork && !repo.archived && !repo.private && typeof repo.name === 'string').slice(0, 6).map(repo => ({
+        name: repo.name, description: repo.description, language: repo.language, stargazers_count: repo.stargazers_count,
+      }));
+      if (!repos.length) throw new Error('No repositories returned');
+      render(repos);
+      if (status) status.textContent = 'Updated from GitHub';
+      try { localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), repos })); } catch {}
+    } catch {
+      if (status) status.textContent = cached?.repos?.length ? 'Showing cached repositories' : 'Showing saved repositories';
+    } finally { clearTimeout(timeout); }
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); load(); }
+    }, { rootMargin: '200px' });
+    observer.observe(grid);
+  } else { load(); }
 })();

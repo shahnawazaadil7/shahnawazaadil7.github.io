@@ -1,43 +1,29 @@
-# Shahnawaz Aadil · Portfolio
+# Shahnawaz Aadil · Personal portfolio
 
-An accessible, responsive portfolio for AI, data science, and software development. Built with HTML, CSS, and plain JavaScript; no dependencies or build step. Compatible with the existing GitHub Pages repository.
+A personal portfolio with a black default theme, a single blue accent, and optional light mode. Plain HTML, CSS, and JavaScript; no build step or dependencies.
 
-## Preview locally
+## Content and features
 
-From this directory, run:
+- Personal introduction and portrait, with rotating AI Engineer, Machine Learning Engineer, NLP Engineer, and Data Scientist text. Animation supports pause and reduced-motion preferences.
+- Five filterable projects with illustrated cards, project details, and verified public source links.
+- Grouped skill categories and local technology logos.
+- About, education, certifications, and community leadership. No employment section.
+- Six recent public GitHub repositories, refreshed from the public GitHub API as the section approaches the viewport. Forks and archived repositories are excluded. Data is cached locally for 30 minutes. A saved snapshot remains visible if the API is unavailable or rate limited.
+- A curated LinkedIn profile overview linked to the real profile. It does not scrape LinkedIn, fetch posts, display a feed, or claim to sync live profile data.
+- Original Formspree contact endpoint, copy-email button, direct email, and profile links.
 
-```sh
-python3 -m http.server 4173 --bind 127.0.0.1
-```
+## Preview and deployment
 
-Open http://127.0.0.1:4173. Stop the server with Ctrl+C.
+Open `index.html`, or run `python3 -m http.server 4173 --bind 127.0.0.1` and visit http://127.0.0.1:4173. Publish the repository root using the existing GitHub Pages configuration. No build required.
 
-## Features
+## Updating content
 
-- Five filterable projects with details and verified public source links.
-- Interactive, keyboard-accessible local AI, RAG, and computer vision explainers.
-- Local portfolio search (button or Command/Ctrl+K). This is keyword search; no model calls, API keys, or user queries sent to a server.
-- Light and dark themes that follow the system preference until a visitor chooses one.
-- Current resume, experience, education, and professional profiles.
-- Formspree contact form with native validation, delivery feedback, and direct email fallback.
-- Self-hosted fonts and skill logos, reduced-motion support, mobile navigation, print styles, and social metadata.
+- `index.html`: visible content, project cards, education, profile overview, and contact form.
+- `style.css`: visual design, themes, and responsive layouts.
+- `script.js`: role animation, theme preference, project details and filters, contact form, and GitHub feed.
+- `assets/documents/shahnawaz-aadil-resume.pdf`: current resume.
+- `assets/data/github-repos.json`: saved repository snapshot; initial fallback cards also appear in the HTML.
 
-## Update content
+The GitHub feed uses the [official public repositories endpoint](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user), without tokens or secrets. The contact form retains `https://formspree.io/f/xrbgajko`; delivery depends on the existing account configuration. Its real delivery should be confirmed on the deployed domain.
 
-- `index.html`: visible copy, cards, skills, timeline, profile links, and contact form.
-- `script.js`: project detail and search data, plus interactions. Keep project/search descriptions aligned with the HTML.
-- `style.css`: themes, layouts, and responsive styling.
-- `assets/documents/shahnawaz-aadil-resume.pdf`: resume download; replace with the latest PDF using the same filename.
-- `assets/fonts/` and `assets/icons/`: local assets, licenses, and source credits.
-
-Hearth's source is not public yet; its details intentionally show no source button. Add its verified repository to `projects.hearth.source` in `script.js` when published.
-
-The form keeps the original Formspree endpoint, `https://formspree.io/f/xrbgajko`. Its delivery depends on that account remaining active and configured. Verify a real submission from the live domain after deployment.
-
-## Publish
-
-Publish the repository root with the repository's existing GitHub Pages configuration. No generated directory or package installation is required. Keep the PDF and `assets` directory with the HTML, CSS, and JavaScript. If the domain changes, update the canonical and Open Graph URLs in `index.html`, `robots.txt`, and `sitemap.xml`.
-
-## Credits
-
-Original portfolio adapted from Chetan Nadda's template; redesigned around current projects and resume content. Brand icon sources and font licenses are included beside the assets. Brand names and logos belong to their respective owners.
+Font licenses and icon credits are stored beside the assets. Original portfolio adapted from Chetan Nadda's template. Brand names and logos belong to their respective owners.
