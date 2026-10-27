@@ -181,7 +181,7 @@
     },
   };
 
-  // Native dialogs handle focus containment and Escape. Restore each opener on close.
+  // Native dialogs contain focus. Search navigation focuses the selected section.
   const openers = new WeakMap();
   const destinations = new WeakMap();
   const openDialog = (dialog, opener) => {
@@ -192,6 +192,7 @@
       $("dialog[open]")
     )
       return false;
+    destinations.delete(dialog);
     openers.set(dialog, opener || document.activeElement);
     dialog.showModal();
     closeMenu();
@@ -213,7 +214,9 @@
     });
     dialog.addEventListener("close", () => {
       const destination = destinations.get(dialog);
+      const opener = openers.get(dialog);
       destinations.delete(dialog);
+      openers.delete(dialog);
       if (destination?.isConnected) {
         const hadTabIndex = destination.hasAttribute("tabindex");
         if (!hadTabIndex) {
@@ -224,10 +227,13 @@
             { once: true },
           );
         }
+        destination.scrollIntoView({
+          behavior: reducedMotion() ? "auto" : "smooth",
+          block: "start",
+        });
         destination.focus({ preventScroll: true });
         return;
       }
-      const opener = openers.get(dialog);
       if (opener?.isConnected && !opener.closest("[hidden]"))
         opener.focus({ preventScroll: true });
     });
@@ -366,7 +372,7 @@
         "Bachelor of Engineering in Computer Science, specialising in Data Science. Completed June 2025 with a 9.23 CGPA.",
     },
     {
-      title: "Software Development Intern at ADVI",
+      title: "Software Development Intern at ADVI Group of Companies",
       category: "Experience",
       href: "#experience",
       keywords:
@@ -490,7 +496,13 @@
         if (entry.href === "#projects") filterProjects("all");
         if (entry.href.startsWith("#") && searchDialog) {
           const destination = document.getElementById(entry.href.slice(1));
-          if (destination) destinations.set(searchDialog, destination);
+          if (destination) {
+            event.preventDefault();
+            destinations.set(searchDialog, destination);
+            if (location.hash !== entry.href)
+              history.pushState(null, "", entry.href);
+            setActiveLink(destination.id);
+          }
         }
         searchDialog?.close();
       });
