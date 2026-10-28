@@ -5,7 +5,9 @@
     "html_url": "https://github.com/shahnawazaadil7/shahnawazaadil7.github.io",
     "language": "CSS",
     "stargazers_count": 0,
-    "pushed_at": "2026-10-27T12:15:47Z"
+    "pushed_at": "2026-10-27T12:36:58Z",
+    "display_title": "Portfolio website",
+    "context": "Source code for this personal portfolio, including the resume viewer and project cards."
   },
   {
     "name": "shahnawazaadil7",
@@ -13,7 +15,9 @@
     "html_url": "https://github.com/shahnawazaadil7/shahnawazaadil7",
     "language": null,
     "stargazers_count": 0,
-    "pushed_at": "2026-10-27T11:56:26Z"
+    "pushed_at": "2026-10-27T11:56:26Z",
+    "display_title": "GitHub profile",
+    "context": "Developer profile, skills, and an overview of my projects."
   },
   {
     "name": "datasets",
@@ -21,7 +25,9 @@
     "html_url": "https://github.com/shahnawazaadil7/datasets",
     "language": null,
     "stargazers_count": 2,
-    "pushed_at": "2026-10-02T14:42:46Z"
+    "pushed_at": "2026-10-02T14:42:46Z",
+    "display_title": "Datasets",
+    "context": "Shared datasets collected for analysis and experimentation."
   },
   {
     "name": "ADVI",
@@ -29,7 +35,9 @@
     "html_url": "https://github.com/shahnawazaadil7/ADVI",
     "language": "Jupyter Notebook",
     "stargazers_count": 0,
-    "pushed_at": "2025-11-09T20:57:14Z"
+    "pushed_at": "2025-11-09T20:57:14Z",
+    "display_title": "ADVI notebooks",
+    "context": "Jupyter notebooks and development experiments."
   },
   {
     "name": "Signify-AI-Interactive-Hand-Sign-Recognition-Model",
@@ -37,7 +45,9 @@
     "html_url": "https://github.com/shahnawazaadil7/Signify-AI-Interactive-Hand-Sign-Recognition-Model",
     "language": "Python",
     "stargazers_count": 0,
-    "pushed_at": "2025-05-24T18:19:59Z"
+    "pushed_at": "2025-05-24T18:19:59Z",
+    "display_title": "Signify AI",
+    "context": "Indian Sign Language recognition using MediaPipe hand landmarks and neural networks."
   },
   {
     "name": "Generating-Synthetic-Images-using-CNN-RNN",
@@ -45,6 +55,8 @@
     "html_url": "https://github.com/shahnawazaadil7/Generating-Synthetic-Images-using-CNN-RNN",
     "language": "Python",
     "stargazers_count": 0,
-    "pushed_at": "2025-05-24T17:39:39Z"
+    "pushed_at": "2025-05-24T17:39:39Z",
+    "display_title": "Text-to-image generation",
+    "context": "A text-to-image prototype using CNNs, BiLSTM layers, and a Tkinter interface."
   }
 ]

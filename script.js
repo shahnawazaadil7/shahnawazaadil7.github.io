@@ -12,35 +12,7 @@
   const reducedMotion = () =>
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  // Storage is optional, including in private or restricted browsing contexts.
-  const themeButton = $("#theme-toggle");
-  const systemTheme = window.matchMedia?.("(prefers-color-scheme: dark)");
-  let savedTheme = null;
-  try {
-    savedTheme = localStorage.getItem("portfolio-theme-v2");
-  } catch {
-    /* Optional preference. */
-  }
-  if (!["light", "dark"].includes(savedTheme)) savedTheme = null;
-  const applyTheme = (theme) => {
-    document.documentElement.dataset.theme = theme;
-    const label = `Switch to ${theme === "dark" ? "light" : "dark"} theme`;
-    themeButton?.setAttribute("aria-label", label);
-    themeButton?.setAttribute("title", label);
-    themeButton?.setAttribute("aria-pressed", String(theme === "dark"));
-  };
-  applyTheme(savedTheme || "dark");
-  themeButton?.addEventListener("click", () => {
-    savedTheme =
-      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    applyTheme(savedTheme);
-    try {
-      localStorage.setItem("portfolio-theme-v2", savedTheme);
-    } catch {
-      /* Keep the in-session choice. */
-    }
-  });
-
+  document.documentElement.dataset.theme = "dark";
 
   const menuButton = $("#menu-toggle");
   const navigation = $("#primary-nav");
@@ -72,211 +44,6 @@
       menuButton.focus();
     }
   });
-
-  const cards = $$(".project-card[data-category]");
-  const filters = $$(".filter-button[data-filter]");
-  const filterProjects = (filter) => {
-    let shown = 0;
-    cards.forEach((card) => {
-      const visible =
-        filter === "all" ||
-        card.dataset.category.split(/[\s,]+/).includes(filter);
-      card.hidden = !visible;
-      if (visible) shown += 1;
-    });
-    filters.forEach((button) =>
-      button.setAttribute(
-        "aria-pressed",
-        String(button.dataset.filter === filter),
-      ),
-    );
-    setText(
-      "#project-count",
-      `${shown} ${shown === 1 ? "project" : "projects"} shown`,
-    );
-  };
-  filters.forEach((button) =>
-    button.addEventListener("click", () =>
-      filterProjects(button.dataset.filter),
-    ),
-  );
-  if (cards.length) filterProjects("all");
-
-  const projects = {
-    hearth: {
-      category: "Local AI · Personal project",
-      title: "Hearth",
-      description:
-        "A local-first AI assistant built around Ollama, with a React and TypeScript interface and streamed REST responses.",
-      stack: ["Ollama", "React", "TypeScript", "REST APIs", "Local AI"],
-      details: [
-        "Searchable conversation history with message editing and response regeneration.",
-        "Switchable assistant profiles and context managed separately for each conversation.",
-        "Offline controls designed around a local model workflow.",
-      ],
-      note: "The source code for Hearth is not currently published.",
-    },
-    coding: {
-      category: "Generative AI · RAG",
-      title: "AI Coding Assistant & Document Analysis",
-      description:
-        "An AI assistant using DeepSeek R1 1.5B for coding support, paired with retrieval-augmented question answering over documents.",
-      stack: ["Python", "DeepSeek R1 1.5B", "RAG", "Document Q&A"],
-      details: [
-        "Supports code completion and debugging with a language model.",
-        "Retrieves document context to support questions and answers.",
-        "Brings coding assistance and document analysis into one project.",
-      ],
-      source:
-        "https://github.com/shahnawazaadil7/End-to-End-AI-Coding-Assistant-Document-Analysis-System",
-    },
-    signify: {
-      category: "Computer vision · SIH 2024",
-      title: "Signify AI",
-      description:
-        "An interactive hand-sign recognition project using MediaPipe hand landmarks and dense neural networks, developed with a six-person team for Smart India Hackathon 2024.",
-      stack: ["Python", "MediaPipe", "Neural Networks", "Computer Vision"],
-      details: [
-        "Uses hand landmarks as input for a dense neural network.",
-        "Worked with a dataset of 57,600 images.",
-        "Developed as part of a six-person Smart India Hackathon 2024 team.",
-      ],
-      source:
-        "https://github.com/shahnawazaadil7/Signify-AI-Interactive-Hand-Sign-Recognition-Model",
-    },
-    space: {
-      category: "Data science · Classification",
-      title: "Winning the Space Race",
-      description:
-        "An exploration of historical SpaceX launch data, using data analysis and classification to investigate launch outcomes.",
-      stack: ["Python", "Data Analysis", "Classification", "Visualization"],
-      details: [
-        "Explores historical launch records and the factors associated with outcomes.",
-        "Applies classification methods to launch outcome prediction.",
-        "Uses visual analysis to communicate findings from the data.",
-      ],
-      source:
-        "https://github.com/shahnawazaadil7/Winning-Space-Race-with-Data-Science-Space-X-competitor",
-    },
-    weather: {
-      category: "Machine learning · Regression",
-      title: "Weather Forecasting",
-      description:
-        "A weather prediction notebook exploring decision tree and gradient boosting regression, supported by feature engineering and visual analysis.",
-      stack: [
-        "Python",
-        "DecisionTreeRegressor",
-        "GradientBoostingRegressor",
-        "Feature Engineering",
-      ],
-      details: [
-        "Explores weather data and prepares features for regression.",
-        "Uses decision tree and gradient boosting regressors.",
-        "Includes plots to inspect data and model predictions.",
-      ],
-      source:
-        "https://www.kaggle.com/code/mohdshahnawazaadil/weather-forecasting-with-dtr-and-gbr",
-    },
-  };
-
-  // Native dialogs contain focus. Search navigation focuses the selected section.
-  const openers = new WeakMap();
-  const destinations = new WeakMap();
-  const openDialog = (dialog, opener) => {
-    if (
-      !dialog ||
-      dialog.open ||
-      typeof dialog.showModal !== "function" ||
-      $("dialog[open]")
-    )
-      return false;
-    destinations.delete(dialog);
-    openers.set(dialog, opener || document.activeElement);
-    dialog.showModal();
-    closeMenu();
-    return true;
-  };
-  $$("dialog").forEach((dialog) => {
-    dialog.addEventListener("click", (event) => {
-      const box = dialog.getBoundingClientRect();
-      const outside =
-        event.clientX < box.left ||
-        event.clientX > box.right ||
-        event.clientY < box.top ||
-        event.clientY > box.bottom;
-      if (
-        event.target.closest("[data-close-dialog]") ||
-        (event.target === dialog && outside)
-      )
-        dialog.close();
-    });
-    dialog.addEventListener("close", () => {
-      const destination = destinations.get(dialog);
-      const opener = openers.get(dialog);
-      destinations.delete(dialog);
-      openers.delete(dialog);
-      if (destination?.isConnected) {
-        const hadTabIndex = destination.hasAttribute("tabindex");
-        if (!hadTabIndex) {
-          destination.setAttribute("tabindex", "-1");
-          destination.addEventListener(
-            "blur",
-            () => destination.removeAttribute("tabindex"),
-            { once: true },
-          );
-        }
-        destination.scrollIntoView({
-          behavior: reducedMotion() ? "auto" : "smooth",
-          block: "start",
-        });
-        destination.focus({ preventScroll: true });
-        return;
-      }
-      if (opener?.isConnected && !opener.closest("[hidden]"))
-        opener.focus({ preventScroll: true });
-    });
-  });
-  const projectDialog = $("#project-dialog");
-  $$("[data-project]").forEach((button) =>
-    button.addEventListener("click", () => {
-      const project = projects[button.dataset.project];
-      if (!project || !projectDialog) return;
-      setText("#dialog-category", project.category);
-      setText("#dialog-title", project.title);
-      setText("#dialog-description", project.description);
-      const stack = $("#dialog-stack");
-      if (stack)
-        stack.replaceChildren(
-          ...project.stack.map((name) => {
-            const tag = document.createElement("span");
-            tag.className = "tag";
-            tag.textContent = name;
-            return tag;
-          }),
-        );
-      const details = $("#dialog-details");
-      if (details)
-        details.replaceChildren(
-          ...project.details.map((text) => {
-            const item = document.createElement("li");
-            item.textContent = text;
-            return item;
-          }),
-        );
-      const source = $("#dialog-source");
-      if (source) {
-        source.hidden = !project.source;
-        if (project.source) source.href = project.source;
-        else source.removeAttribute("href");
-      }
-      const note = $("#dialog-note");
-      if (note) {
-        note.textContent = project.note || "";
-        note.hidden = !project.note;
-      }
-      openDialog(projectDialog, button);
-    }),
-  );
 
   const copyButton = $("#copy-email");
   copyButton?.addEventListener("click", async () => {
@@ -360,60 +127,71 @@
       }
     });
 
+  // Align character updates with paint; let the completed role rest before rewriting.
   const role = document.getElementById('typed-role');
-  const toggle = document.getElementById('animation-toggle');
   const prefix = document.querySelector('.role-prefix');
   const roles = ['AI Engineer', 'Machine Learning Engineer', 'NLP Engineer', 'Data Scientist'];
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0;
-  let position = roles[0].length;
-  let deleting = true;
-  let paused = false;
-  let timer;
+  let roleIndex = 0;
+  let character = roles[0].length;
+  let phase = 'hold';
+  let typingTimer = 0;
+  let typingFrame = 0;
 
-  const tick = () => {
-    if (!role || paused || motion.matches || document.hidden) return;
-    const title = roles[index];
-    position += deleting ? -1 : 1;
-    role.textContent = title.slice(0, position);
-    if (position === 0 && deleting) {
-      index = (index + 1) % roles.length;
-      deleting = false;
-      if (prefix) prefix.textContent = roles[index].startsWith('AI') || roles[index].startsWith('NLP') ? "I'm an" : "I'm a";
-      timer = setTimeout(tick, 250);
-    } else if (position === title.length && !deleting) {
-      deleting = true;
-      timer = setTimeout(tick, 1800);
-    } else {
-      timer = setTimeout(tick, deleting ? 42 : 80);
-    }
+  const stopTyping = () => {
+    clearTimeout(typingTimer);
+    cancelAnimationFrame(typingFrame);
+    typingTimer = 0;
+    typingFrame = 0;
   };
-  const restart = () => {
-    clearTimeout(timer);
-    if (toggle) toggle.hidden = motion.matches;
-    if (!motion.matches && !paused && !document.hidden && role) timer = setTimeout(tick, 1800);
+  const updatePrefix = () => {
+    if (prefix) prefix.textContent = /^(AI|NLP)/.test(roles[roleIndex]) ? "I'm an" : "I'm a";
   };
-  toggle?.addEventListener('click', () => {
-    paused = !paused;
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.setAttribute('aria-label', paused ? 'Resume role animation' : 'Pause role animation');
-    toggle.title = paused ? 'Resume role animation' : 'Pause role animation';
-    toggle.textContent = paused ? '▶' : 'Ⅱ';
-    restart();
-  });
-  motion.addEventListener('change', () => {
-    if (motion.matches && role) {
-      index = 0;
-      position = roles[0].length;
-      deleting = true;
-      role.textContent = roles[0];
-      if (prefix) prefix.textContent = "I'm an";
+  const showCompleteRole = () => {
+    character = roles[roleIndex].length;
+    phase = 'hold';
+    if (role) role.textContent = roles[roleIndex];
+    updatePrefix();
+  };
+  const scheduleTyping = delay => {
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(() => {
+      typingTimer = 0;
+      typingFrame = requestAnimationFrame(typeFrame);
+    }, delay);
+  };
+  function typeFrame() {
+    typingFrame = 0;
+    if (!role || motion.matches || document.hidden) return;
+    if (phase === 'hold') phase = 'erase';
+    if (phase === 'erase') {
+      character = Math.max(0, character - 1);
+      role.textContent = roles[roleIndex].slice(0, character);
+      if (character === 0) {
+        roleIndex = (roleIndex + 1) % roles.length;
+        updatePrefix();
+        phase = 'type';
+        scheduleTyping(180);
+      } else scheduleTyping(28);
+      return;
     }
-    restart();
-  });
-  document.addEventListener('visibilitychange', restart);
-  restart();
-
+    character = Math.min(roles[roleIndex].length, character + 1);
+    role.textContent = roles[roleIndex].slice(0, character);
+    if (character === roles[roleIndex].length) {
+      phase = 'hold';
+      scheduleTyping(2500);
+    } else scheduleTyping(58);
+  }
+  const resumeTyping = () => {
+    stopTyping();
+    if (motion.matches) { showCompleteRole(); return; }
+    if (role && !document.hidden) scheduleTyping(phase === 'hold' ? 2500 : 80);
+  };
+  motion.addEventListener('change', resumeTyping);
+  document.addEventListener('visibilitychange', resumeTyping);
+  window.addEventListener('pagehide', stopTyping);
+  window.addEventListener('pageshow', resumeTyping);
+  resumeTyping();
 
   setText("#year", String(new Date().getFullYear()));
   const navLinks = $$('.nav-link[href^="#"]');
@@ -426,7 +204,7 @@
   const sections = navLinks
     .map((link) => document.getElementById(link.getAttribute("href").slice(1)))
     .filter(Boolean);
-  if (sections.length) setActiveLink(location.hash.slice(1) || sections[0].id);
+  if (sections.length) setActiveLink(location.hash.slice(1) || "home");
   if ("IntersectionObserver" in window) {
     const visible = new Set();
     const observer = new IntersectionObserver(
@@ -441,6 +219,7 @@
             Math.abs(b.getBoundingClientRect().top - 140),
         )[0];
         if (closest) setActiveLink(closest.id);
+        else if (window.scrollY < 250) setActiveLink("home");
       },
       { rootMargin: "-15% 0px -55% 0px", threshold: 0 },
     );
@@ -472,15 +251,51 @@
   const status = document.getElementById('repo-status');
   if (!grid) return;
   const username = 'shahnawazaadil7';
-  const cacheKey = 'portfolio-public-repos-v1';
+  const cacheKey = 'portfolio-public-repos-v2';
   const maxAge = 30 * 60 * 1000;
-  const fields = repository => ({
-    name: String(repository.name || 'Repository'),
-    description: String(repository.description || 'Explore the source code and project details on GitHub.').slice(0, 190),
-    language: String(repository.language || 'Repository'),
-    stars: Number(repository.stargazers_count) || 0,
-    url: `https://github.com/${username}/${encodeURIComponent(repository.name)}`,
-  });
+  const repositoryContext = {
+  "shahnawazaadil7.github.io": {
+    "title": "Portfolio website",
+    "description": "Source code for this personal portfolio, including the resume viewer and project cards."
+  },
+  "shahnawazaadil7": {
+    "title": "GitHub profile",
+    "description": "Developer profile, skills, and an overview of my projects."
+  },
+  "datasets": {
+    "title": "Datasets",
+    "description": "Shared datasets collected for analysis and experimentation."
+  },
+  "ADVI": {
+    "title": "ADVI notebooks",
+    "description": "Jupyter notebooks and development experiments."
+  },
+  "Signify-AI-Interactive-Hand-Sign-Recognition-Model": {
+    "title": "Signify AI",
+    "description": "Indian Sign Language recognition using MediaPipe hand landmarks and neural networks."
+  },
+  "Generating-Synthetic-Images-using-CNN-RNN": {
+    "title": "Text-to-image generation",
+    "description": "A text-to-image prototype using CNNs, BiLSTM layers, and a Tkinter interface."
+  },
+  "End-to-End-AI-Coding-Assistant-Document-Analysis-System": {
+    "title": "AI Coding & Document Assistant",
+    "description": "DeepSeek-powered coding assistance and retrieval-augmented document Q&A."
+  }
+};
+  const fields = repository => {
+    const name = String(repository.name || 'Repository');
+    const context = repositoryContext[name];
+    const topics = Array.isArray(repository.topics) ? repository.topics.slice(0, 3).join(' · ') : '';
+    return {
+      name,
+      title: context?.title || name.replace(/[-_]+/g, ' '),
+      description: String(context?.description || repository.description || topics || (repository.language ? `${repository.language} source code.` : 'Public project source and documentation.')).slice(0, 190),
+      language: String(repository.language || ''),
+      stars: Number(repository.stargazers_count) || 0,
+      url: `https://github.com/${username}/${encodeURIComponent(name)}`,
+    };
+  };
   const render = repositories => {
     const cards = repositories.slice(0, 6).map(repository => {
       const item = fields(repository);
@@ -500,7 +315,8 @@
       arrow.setAttribute('aria-hidden', 'true');
       top.append(icon, arrow);
       const title = document.createElement('h3');
-      title.textContent = item.name;
+      title.textContent = item.title;
+      title.title = item.name;
       const description = document.createElement('p');
       description.textContent = item.description;
       const meta = document.createElement('div');
@@ -510,8 +326,11 @@
       const stars = document.createElement('span');
       stars.textContent = `☆ ${item.stars}`;
       stars.setAttribute('aria-label', `${item.stars} GitHub stars`);
-      meta.append(language, stars);
-      card.append(top, title, description, meta);
+      if (item.language) meta.append(language);
+      if (item.stars > 0) meta.append(stars);
+      card.append(top, title);
+      if (item.description) card.append(description);
+      if (meta.childElementCount) card.append(meta);
       return card;
     });
     if (cards.length) grid.replaceChildren(...cards);
@@ -536,7 +355,7 @@
       const data = await response.json();
       if (!Array.isArray(data)) throw new Error('Unexpected GitHub response');
       const repos = data.filter(repo => !repo.fork && !repo.archived && !repo.private && typeof repo.name === 'string').slice(0, 6).map(repo => ({
-        name: repo.name, description: repo.description, language: repo.language, stargazers_count: repo.stargazers_count,
+        name: repo.name, description: repo.description, language: repo.language, stargazers_count: repo.stargazers_count, topics: repo.topics,
       }));
       if (!repos.length) throw new Error('No repositories returned');
       render(repos);
@@ -552,4 +371,86 @@
     }, { rootMargin: '200px' });
     observer.observe(grid);
   } else { load(); }
+})();
+
+// Native modal with an embedded PDF; phones use a scrollable page preview.
+(() => {
+  const dialog = document.getElementById('resume-dialog');
+  if (!dialog || typeof dialog.showModal !== 'function') return;
+  const close = document.getElementById('resume-close');
+  const frame = document.getElementById('resume-native-pdf');
+  const preview = document.getElementById('resume-preview-image');
+  const page = document.getElementById('resume-page');
+  const scroll = document.getElementById('resume-mobile-scroll');
+  const zoomLevel = document.getElementById('resume-zoom-level');
+  const zoomIn = document.getElementById('resume-zoom-in');
+  const zoomOut = document.getElementById('resume-zoom-out');
+  const mobile = window.matchMedia('(max-width: 700px)');
+  let opener;
+  let zoom = 100;
+  const applyZoom = value => {
+    zoom = Math.max(100, Math.min(250, value));
+    if (page) page.style.setProperty('--resume-width', `${zoom}%`);
+    if (zoomLevel) zoomLevel.textContent = `${zoom}%`;
+    if (zoomOut) zoomOut.disabled = zoom <= 100;
+    if (zoomIn) zoomIn.disabled = zoom >= 250;
+  };
+  const loadViewer = () => {
+    if (mobile.matches) {
+      if (preview && !preview.getAttribute('src')) preview.src = preview.dataset.src;
+    } else if (frame && !frame.getAttribute('src')) {
+      frame.src = frame.dataset.src;
+    }
+  };
+  document.querySelectorAll('[data-open-resume]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      event.preventDefault();
+      if (dialog.open) return;
+      opener = link;
+      applyZoom(100);
+      loadViewer();
+      document.getElementById('primary-nav')?.classList.remove('is-open');
+      document.getElementById('menu-toggle')?.setAttribute('aria-expanded', 'false');
+      dialog.showModal();
+      document.body.classList.add('resume-open');
+      if (scroll) { scroll.scrollTop = 0; scroll.scrollLeft = 0; }
+      close?.focus({ preventScroll: true });
+    });
+  });
+  const resumeMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let dismissing = false;
+  const dismissResume = () => {
+    if (!dialog.open || dismissing) return;
+    if (resumeMotion.matches || typeof dialog.animate !== 'function') { dialog.close(); return; }
+    dismissing = true;
+    const animation = dialog.animate([
+      { opacity: 1, transform: 'translateY(0) scale(1)' },
+      { opacity: 0, transform: 'translateY(8px) scale(.99)' },
+    ], { duration: 160, easing: 'cubic-bezier(.4, 0, 1, 1)' });
+    animation.finished.catch(() => {}).finally(() => {
+      if (dialog.open) dialog.close();
+      animation.cancel();
+      dismissing = false;
+    });
+  };
+  close?.addEventListener('click', dismissResume);
+  dialog.addEventListener('cancel', event => { event.preventDefault(); dismissResume(); });
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const box = dialog.getBoundingClientRect();
+    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dismissResume();
+  });
+  dialog.addEventListener('close', () => {
+    dismissing = false;
+    document.body.classList.remove('resume-open');
+    opener?.focus({ preventScroll: true });
+  });
+  zoomIn?.addEventListener('click', () => applyZoom(zoom + 25));
+  zoomOut?.addEventListener('click', () => applyZoom(zoom - 25));
+  document.getElementById('resume-fit')?.addEventListener('click', () => {
+    applyZoom(100);
+    if (scroll) scroll.scrollLeft = 0;
+  });
+  mobile.addEventListener('change', () => { if (dialog.open) loadViewer(); });
 })();
